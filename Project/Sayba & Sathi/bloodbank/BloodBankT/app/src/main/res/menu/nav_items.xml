@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/home24"
+        app:showAsAction="ifRoom"
+        />
+    <item android:title="feedback"
+        android:id="@+id/feedback"
+        android:icon="@drawable/feedback"
+        app:showAsAction="ifRoom"
+
+        />
+    <item  android:title="login"
+        android:id="@+id/login"
+        android:icon="@drawable/account24"
+        app:showAsAction="ifRoom"
+        />
+
+</menu>

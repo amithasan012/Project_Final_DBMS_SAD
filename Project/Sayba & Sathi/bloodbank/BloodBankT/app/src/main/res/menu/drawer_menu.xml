@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/group1"
+        >
+        <item android:title="Blood doners"
+            android:id="@+id/blood_doner"
+            android:icon="@drawable/blooddonor"
+            app:showAsAction="ifRoom"
+            />
+        <item android:title="Blood seeker"
+            android:id="@+id/blood_seeker"
+            android:icon="@drawable/request"
+            app:showAsAction="ifRoom"
+            />
+    </group>
+    <group
+        android:id="@+id/gropup2"
+        >
+        <item android:title="About Me"
+            android:id="@+id/aboutme"
+            android:icon="@drawable/save24"
+            app:showAsAction="ifRoom"
+            />
+        <item android:title="Share"
+            android:id="@+id/share"
+            android:icon="@drawable/share24"
+            app:showAsAction="ifRoom"
+            />
+        <item android:title="Rate Us"
+            android:id="@+id/rateUs"
+            android:icon="@drawable/rate24"
+            app:showAsAction="ifRoom"
+            />
+        <item android:title="Privacy Policy"
+            android:id="@+id/ppolicy"
+            android:icon="@drawable/privacypolicy24"
+            app:showAsAction="ifRoom"
+            />
+    </group>
+
+
+</menu>

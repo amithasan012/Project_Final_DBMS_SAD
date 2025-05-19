@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BloodSeekerFragment"
+    android:background="#A49097"
+    android:id="@+id/blood_seeker">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/progressBar"
+            android:visibility="invisible"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/bseeker_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="your name"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="text"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/bseeker_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="your phone"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="number"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/hospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hospital name"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Why do you want blood"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/requiredB_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your blood group"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/amountn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount of required blood"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:textColor="@color/black"
+
+            />
+
+
+
+
+        <Button
+            android:id="@+id/SignInS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Sign In"
+            android:padding="15dp"
+            android:textSize="10dp"
+            android:backgroundTint="#EE6674"
+            android:textColor="@color/white"
+            />
+        <Button
+            android:id="@+id/ShowlistS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Show list"
+            android:padding="15dp"
+            android:textSize="10dp"
+            android:backgroundTint="#EE6674"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

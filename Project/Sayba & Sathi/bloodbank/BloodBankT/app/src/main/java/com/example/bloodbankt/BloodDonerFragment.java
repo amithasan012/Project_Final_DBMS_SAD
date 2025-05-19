@@ -1,0 +1,180 @@
+package com.example.bloodbankt;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class BloodDonerFragment extends Fragment {
+RecyclerView recyclerView;
+Button DCreate;
+FrameLayout blood_doner;
+HashMap<String,String> hashMap;
+ArrayList<HashMap<String,String>> arrayList;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+          View myView =inflater.inflate(R.layout.fragment_blood_doner, container, false);
+
+          recyclerView = myView.findViewById(R.id.recyclerView);
+        DCreate = myView.findViewById(R.id.DCreate);
+        blood_doner = myView.findViewById(R.id.blood_doner);
+
+        arrayList = new ArrayList<>();
+
+        fetchData();
+
+        MyAdapter adapter = new MyAdapter();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+ //============================dcreate start==================================
+        DCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.blood_doner,new LoginFragment());
+                ft.commit();
+            }
+        });
+        //===============dcreate end====================================================
+
+        return myView;
+    }
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>{
+
+    public class myViewHolder extends RecyclerView.ViewHolder{
+        TextView name,phone,address,bloodGroup,gender;
+        ImageButton deleteButton;
+
+
+        public myViewHolder(@NonNull View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.name);
+            phone = itemView.findViewById(R.id.phone);
+            address = itemView.findViewById(R.id.address);
+            bloodGroup = itemView.findViewById(R.id.bloodGroup);
+            gender = itemView.findViewById(R.id.gender);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
+        }
+    }
+
+    @NonNull
+    @Override
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = getLayoutInflater();
+        View myView = inflater.inflate(R.layout.donar_list,parent,false);
+        return new myViewHolder(myView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
+
+        HashMap<String, String> item = arrayList.get(position);
+        holder.name.setText(item.get("Name"));
+        holder.phone.setText(item.get("Phone"));
+        holder.bloodGroup.setText(item.get("BloodGroup"));
+        holder.address.setText(item.get("Address"));
+        holder.gender.setText(item.get("Gender"));
+//================delete===========================================
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = item.get("Phone"); // Use phone or ID as unique identifier
+                deleteItem(phone, position);
+            }
+
+            private void deleteItem(String phone, int position) {
+                String deleteUrl = "https://googix.xyz/blood_db/delete.php?phone=" + phone;
+
+                RequestQueue queue = Volley.newRequestQueue(getActivity());
+                StringRequest deleteRequest = new StringRequest(
+                        Request.Method.GET,
+                        deleteUrl,
+                        response -> {
+                            // Remove from local list
+                            arrayList.remove(position);
+                            notifyItemRemoved(position);
+                            Toast.makeText(getActivity(), "Deleted successfully", Toast.LENGTH_SHORT).show();
+                        },
+                        error -> {
+                            Toast.makeText(getActivity(), "Delete failed", Toast.LENGTH_SHORT).show();
+                            error.printStackTrace();
+                        }
+                );
+                queue.add(deleteRequest);
+            }
+        });
+        //===================delete==================================
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+
+
+}
+    public void fetchData() {
+        String url = "https://googix.xyz/blood_db/view.php"; // Your PHP endpoint
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                response -> {
+                    arrayList.clear(); // Clear old data
+                    for (int i = 0; i < response.length(); i++) {
+                        try {
+                            JSONObject obj = response.getJSONObject(i);
+                            hashMap= new HashMap<>();
+                            hashMap.put("Name", obj.getString("name"));
+                            hashMap.put("Phone", obj.getString("phone"));
+                            hashMap.put("BloodGroup", obj.getString("bloodgroup"));
+                            hashMap.put("Address", obj.getString("address"));
+                            hashMap.put("Gender", obj.getString("gender"));
+                            arrayList.add(hashMap);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    recyclerView.getAdapter().notifyDataSetChanged(); // Update UI
+                },
+                error -> {
+                    error.printStackTrace();
+                });
+
+        queue.add(jsonArrayRequest);
+    }
+
+}

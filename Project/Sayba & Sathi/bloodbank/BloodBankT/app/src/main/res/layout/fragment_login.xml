@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginFragment"
+    android:background="#F9CDCB">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your Information here"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="#EE6674"
+            />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/login_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="your name"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="text"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/login_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="your phone number"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="number"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/login_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="your blood group"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="text"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/login_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="your address"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="text"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:id="@+id/login_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="your gender"
+            android:background="@color/white"
+            android:minHeight="20dp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="text"
+            android:ems="10"
+            android:textColor="@color/black"
+            />
+
+        <Button
+            android:id="@+id/submitInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Submit"
+            android:padding="15dp"
+            android:textSize="18dp"
+            android:backgroundTint="#EE6674"
+            android:textColor="@color/white"
+
+            />
+    </LinearLayout>
+</FrameLayout>
