@@ -10,7 +10,7 @@
                     <!-- <a href="#" onclick="window.print()" class="btn btn-info"><i class="material-icons">&#xE24D;</i> <span>Print</span></a> -->
                 </div>
             </div>
-        </div>
+        </div> 
         
         <table class="table table-striped table-hover text-center" id="NoOrder">
             <thead style="background-color: rgb(111 202 203);">

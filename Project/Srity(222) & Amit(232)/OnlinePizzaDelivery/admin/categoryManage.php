@@ -66,7 +66,7 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="row mx-auto" style="width:112px">
-                                            <button class="btn btn-sm btn-primary edit_cat" type="button" data-toggle="modal" data-target="#updateCat' .$catId. '">Edit</button>
+                                            
                                             <form action="partials/_categoryManage.php" method="POST">
                                                 <button name="removeCategory" class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
                                                 <input type="hidden" name="catId" value="'.$catId. '">
